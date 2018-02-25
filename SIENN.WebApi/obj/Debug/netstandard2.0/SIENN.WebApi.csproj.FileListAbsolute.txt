@@ -1,0 +1,4 @@
+E:\Visual Studio\Sienn\SIENN.WebApi\obj\Debug\netstandard2.0\SIENN.WebApi.csprojResolveAssemblyReference.cache
+E:\Visual Studio\Sienn\SIENN.WebApi\obj\Debug\netstandard2.0\SIENN.WebApi.csproj.CoreCompileInputs.cache
+E:\Visual Studio\Sienn\SIENN.WebApi\obj\Debug\netstandard2.0\SIENN.WebApi.AssemblyInfoInputs.cache
+E:\Visual Studio\Sienn\SIENN.WebApi\obj\Debug\netstandard2.0\SIENN.WebApi.AssemblyInfo.cs

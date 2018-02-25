@@ -1,0 +1,15 @@
+E:\Visual Studio\Sienn\SIENN.Services\bin\Debug\netstandard2.0\SIENN.Services.deps.json
+E:\Visual Studio\Sienn\SIENN.Services\bin\Debug\netstandard2.0\SIENN.Services.dll
+E:\Visual Studio\Sienn\SIENN.Services\bin\Debug\netstandard2.0\SIENN.Services.pdb
+E:\Visual Studio\Sienn\SIENN.Services\obj\Debug\netstandard2.0\SIENN.Services.csprojResolveAssemblyReference.cache
+E:\Visual Studio\Sienn\SIENN.Services\obj\Debug\netstandard2.0\SIENN.Services.csproj.CoreCompileInputs.cache
+E:\Visual Studio\Sienn\SIENN.Services\obj\Debug\netstandard2.0\SIENN.Services.AssemblyInfoInputs.cache
+E:\Visual Studio\Sienn\SIENN.Services\obj\Debug\netstandard2.0\SIENN.Services.AssemblyInfo.cs
+E:\Visual Studio\Sienn\SIENN.Services\obj\Debug\netstandard2.0\SIENN.Services.dll
+E:\Visual Studio\Sienn\SIENN.Services\obj\Debug\netstandard2.0\SIENN.Services.pdb
+E:\Visual Studio\Sienn\SIENN.Services\bin\Debug\netstandard2.0\SIENN.DbAccess.dll
+E:\Visual Studio\Sienn\SIENN.Services\bin\Debug\netstandard2.0\SIENN.DbAccess.pdb
+E:\Visual Studio\Sienn\SIENN.Services\bin\Debug\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.dll
+E:\Visual Studio\Sienn\SIENN.Services\bin\Debug\netstandard2.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\Visual Studio\Sienn\SIENN.Services\bin\Debug\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.xml
+E:\Visual Studio\Sienn\SIENN.Services\bin\Debug\netstandard2.0\Microsoft.EntityFrameworkCore.SqlServer.xml

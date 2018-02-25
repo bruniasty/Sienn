@@ -1,0 +1,15 @@
+E:\Visual Studio\Sienn\SIENN.WebApi\bin\Debug\netcoreapp2.0\SIENN.DbAccess.dll
+E:\Visual Studio\Sienn\SIENN.WebApi\obj\Debug\netcoreapp2.0\SIENN.WebApi.csprojResolveAssemblyReference.cache
+E:\Visual Studio\Sienn\SIENN.WebApi\obj\Debug\netcoreapp2.0\SIENN.WebApi.csproj.CoreCompileInputs.cache
+E:\Visual Studio\Sienn\SIENN.WebApi\obj\Debug\netcoreapp2.0\SIENN.WebApi.AssemblyInfoInputs.cache
+E:\Visual Studio\Sienn\SIENN.WebApi\obj\Debug\netcoreapp2.0\SIENN.WebApi.AssemblyInfo.cs
+E:\Visual Studio\Sienn\SIENN.WebApi\bin\Debug\netcoreapp2.0\SIENN.WebApi.deps.json
+E:\Visual Studio\Sienn\SIENN.WebApi\bin\Debug\netcoreapp2.0\SIENN.WebApi.runtimeconfig.json
+E:\Visual Studio\Sienn\SIENN.WebApi\bin\Debug\netcoreapp2.0\SIENN.WebApi.runtimeconfig.dev.json
+E:\Visual Studio\Sienn\SIENN.WebApi\bin\Debug\netcoreapp2.0\SIENN.WebApi.dll
+E:\Visual Studio\Sienn\SIENN.WebApi\bin\Debug\netcoreapp2.0\SIENN.WebApi.pdb
+E:\Visual Studio\Sienn\SIENN.WebApi\bin\Debug\netcoreapp2.0\SIENN.DbAccess.pdb
+E:\Visual Studio\Sienn\SIENN.WebApi\obj\Debug\netcoreapp2.0\SIENN.WebApi.dll
+E:\Visual Studio\Sienn\SIENN.WebApi\obj\Debug\netcoreapp2.0\SIENN.WebApi.pdb
+E:\Visual Studio\Sienn\SIENN.WebApi\bin\Debug\netcoreapp2.0\SIENN.Services.dll
+E:\Visual Studio\Sienn\SIENN.WebApi\bin\Debug\netcoreapp2.0\SIENN.Services.pdb
