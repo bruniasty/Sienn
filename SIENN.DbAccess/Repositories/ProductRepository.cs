@@ -1,41 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using SIENN.DbAccess.Context;
+using SIENN.DbAccess.DTO;
 using SIENN.DbAccess.Entities;
+using SIENN.DbAccess.Interfaces;
 
 namespace SIENN.DbAccess.Repositories
 {
     public class ProductRepository<T, TKey> : StoreRepository<T, TKey>
-        where T : Product
+        where T : class, IKey
         where TKey : IEquatable<TKey>
     {
-        public ProductRepository(StoreDbContext context) : base(context)
+        private readonly IMapper mapper;
+
+        public ProductRepository(StoreDbContext context, IMapper mapper) : base(context)
         {
+            this.mapper = mapper;
         }
 
-        public override T Get(int id)
+        public new ProductDto Get(int id)
         {
-            return (T)this.GetProductsQuery().FirstOrDefault(e => e.Id == id);
+            return this.GetProductsQuery().ProjectTo<ProductDto>(this.mapper.ConfigurationProvider).FirstOrDefault(e => e.Id == id);
         }
 
-        public override IEnumerable<T> GetAll()
+        public new IEnumerable<ProductDto> GetAll()
         {
-            return (IEnumerable<T>)this.GetProductsQuery().ToList();
+            return this.GetProductsQuery().ProjectTo<ProductDto>(this.mapper.ConfigurationProvider).ToList();
         }
 
-        public override IEnumerable<T> GetRange(int start, int count)
+        public new IEnumerable<ProductDto> GetRange(int start, int count)
         {
-            return (IEnumerable<T>)this.GetProductsQuery().Skip(start).Take(count);
+            return this.GetProductsQuery().Skip(start).Take(count).ProjectTo<ProductDto>(this.mapper.ConfigurationProvider);
         }
 
-        public IEnumerable<T> GetRange(int start, int count, bool isAvailable)
+        public IEnumerable<ProductInfoDto> GetRangeInfo(int start, int count)
         {
-            return (IEnumerable<T>)this.GetProductsQuery().Where(p => p.IsAvailable == isAvailable).Skip(start).Take(count);
+            var products = this.GetProductsQuery().Skip(start).Take(count);
+
+            var result = new List<ProductInfoDto>();
+            foreach (var product in products)
+            {
+                result.Add(new ProductInfoDto(product));
+            }
+
+            return result;
         }
 
-        public IEnumerable<T> GetFiltered(string type = null, string category = null, string unit = null)
+        public IEnumerable<ProductDto> GetRange(int start, int count, bool isAvailable)
+        {
+            return this.GetProductsQuery().Where(p => p.IsAvailable == isAvailable).Skip(start).Take(count).ProjectTo<ProductDto>(this.mapper.ConfigurationProvider);
+        }
+
+        public IEnumerable<ProductDto> GetFiltered(string type = null, string category = null, string unit = null)
         {
             var query = this.GetProductsQuery();
 
@@ -54,17 +74,17 @@ namespace SIENN.DbAccess.Repositories
                 query = query.Where(q => q.Unit.Code.Contains(unit) || q.Unit.Description.Contains(unit));
             }
 
-            return (IEnumerable<T>)query;
+            return query.ProjectTo<ProductDto>(this.mapper.ConfigurationProvider);
         }
 
         private IQueryable<Product> GetProductsQuery()
         {
             return ((StoreDbContext)this.context).Products
+                .AsQueryable()
                 .Include(e => e.Type)
                 .Include(e => e.Unit)
                 .Include(e => e.ProductCategories)
-                .ThenInclude(e => e.Category)
-                .AsQueryable();
+                .ThenInclude(e => e.Category);
         }
     }
 }

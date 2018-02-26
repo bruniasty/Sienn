@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SIENN.DbAccess.Context;
-using SIENN.Services.Mapping;
+using SIENN.DbAccess.Mapping;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace SIENN.WebApi

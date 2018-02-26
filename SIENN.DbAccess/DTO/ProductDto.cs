@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SIENN.Services.DTO
+namespace SIENN.DbAccess.DTO
 {
     public class ProductDto : BaseDto
     {

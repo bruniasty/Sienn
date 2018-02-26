@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SIENN.Services.DTO
+namespace SIENN.DbAccess.DTO
 {
     public class CategoryDto : BaseDto
     {

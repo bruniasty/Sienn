@@ -1,6 +1,6 @@
 ﻿using SIENN.DbAccess.Entities;
 
-namespace SIENN.Services.DTO
+namespace SIENN.DbAccess.DTO
 {
     public class TypeDto : BaseEntity
     {

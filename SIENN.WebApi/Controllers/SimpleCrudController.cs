@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SIENN.DbAccess.Context;
-using SIENN.DbAccess.Repositories;
 using SIENN.Services;
 
 namespace SIENN.WebApi.Controllers

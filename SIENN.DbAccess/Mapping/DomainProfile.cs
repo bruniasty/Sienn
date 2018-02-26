@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using AutoMapper;
+using SIENN.DbAccess.DTO;
 using SIENN.DbAccess.Entities;
-using SIENN.Services.DTO;
 
-namespace SIENN.Services.Mapping
+namespace SIENN.DbAccess.Mapping
 {
     public class DomainProfile : Profile
     {
