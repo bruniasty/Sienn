@@ -1,35 +1,33 @@
 ﻿using System;
-using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SIENN.DbAccess.Context;
 using SIENN.Services;
 
 namespace SIENN.WebApi.Controllers
 {
-    public class SimpleCrudController<T, TKey> : Controller
-        where T : class
-        where TKey : IEquatable<TKey>
+    public class SimpleCrudController<T> : Controller where T : class
     {
-        protected readonly ISimpleCrudService<T, TKey> crudService;
+        protected readonly ISimpleCrudService<T> crudService;
 
-        public SimpleCrudController(StoreDbContext dbContext)
+        public SimpleCrudController(StoreDbContext dbContext, IMapper mapper)
         {
-            this.crudService = new SimpleCrudService<T, TKey>(dbContext);
+            this.crudService = new SimpleCrudService<T>(dbContext, mapper);
         }
 
         [HttpGet]
         [Route("[action]")]
-        public async Task<object> List()
+        public object GetAll()
         {
-            return await this.crudService.List();
+            return this.crudService.GetAll();
         }
 
         [HttpGet]
-        public async Task<object> Get(TKey id)
+        public object Get(int id)
         {
             try
             {
-                return await this.crudService.Get(id);
+                return this.crudService.Get(id);
             }
             catch (ApplicationException e)
             {
@@ -39,11 +37,11 @@ namespace SIENN.WebApi.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public async Task<object> Update([FromBody] T model)
+        public object Update([FromBody] T model)
         {
             try
             {
-                await this.crudService.Update(model);
+                this.crudService.Update(model);
             }
             catch (ApplicationException e)
             {
@@ -55,11 +53,11 @@ namespace SIENN.WebApi.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public async Task<object> Create([FromBody] T model)
+        public object Create([FromBody] T model)
         {
             try
             {
-                await this.crudService.Create(model);
+                this.crudService.Create(model);
             }
             catch (ApplicationException e)
             {
@@ -71,11 +69,11 @@ namespace SIENN.WebApi.Controllers
 
         [HttpDelete]
         [Route("[action]")]
-        public async Task<object> Delete(TKey id)
+        public object Delete(int id)
         {
             try
             {
-                await this.crudService.Delete(id);
+                this.crudService.Delete(id);
             }
             catch (ApplicationException e)
             {

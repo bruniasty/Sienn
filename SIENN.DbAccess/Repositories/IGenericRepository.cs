@@ -17,5 +17,7 @@ namespace SIENN.DbAccess.Repositories
 
         void Add(TEntity entity);
         void Remove(TEntity entity);
+        void Remove(int id);
+        void Update(TEntity entity);
     }
 }

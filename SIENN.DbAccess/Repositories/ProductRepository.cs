@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -7,17 +6,14 @@ using Microsoft.EntityFrameworkCore;
 using SIENN.DbAccess.Context;
 using SIENN.DbAccess.DTO;
 using SIENN.DbAccess.Entities;
-using SIENN.DbAccess.Interfaces;
 
 namespace SIENN.DbAccess.Repositories
 {
-    public class ProductRepository<T, TKey> : StoreRepository<T, TKey>
-        where T : class, IKey
-        where TKey : IEquatable<TKey>
+    public class ProductRepository<T> : GenericRepository<T> where T : class
     {
         private readonly IMapper mapper;
 
-        public ProductRepository(StoreDbContext context, IMapper mapper) : base(context)
+        public ProductRepository(DbContext context, IMapper mapper) : base(context)
         {
             this.mapper = mapper;
         }

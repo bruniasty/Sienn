@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using SIENN.DbAccess.Context;
 using SIENN.DbAccess.Entities;
 
 namespace SIENN.WebApi.Controllers
 {
     [Route("api/[controller]")]
-    public class UnitController : SimpleCrudController<Unit, int>
+    public class UnitController : SimpleCrudController<Unit>
     {
-        public UnitController(StoreDbContext dbContext) : base(dbContext)
+        public UnitController(StoreDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
         }
     }

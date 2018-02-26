@@ -1,17 +1,15 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using SIENN.DbAccess.Repositories;
 
 namespace SIENN.Services
 {
-    public interface ISimpleCrudService<T, in TKey>
-        where T : class
-        where TKey : IEquatable<TKey>
+    public interface ISimpleCrudService<T> where T : class
     {
-        Task<IQueryable<T>> List();
-        Task<T> Get(TKey id);
-        Task Create(T t);
-        Task Update(T t);
-        Task Delete(TKey id);
+        IEnumerable<T> GetAll();
+        T Get(int id);
+        void Create(T t);
+        void Update(T t);
+        void Delete(int id);
+        UnitOfWork UnitOfWork { get; }
     }
 }

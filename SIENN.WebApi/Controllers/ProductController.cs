@@ -5,46 +5,42 @@ using Microsoft.AspNetCore.Mvc;
 using SIENN.DbAccess.Context;
 using SIENN.DbAccess.DTO;
 using SIENN.DbAccess.Entities;
-using SIENN.DbAccess.Repositories;
 
 namespace SIENN.WebApi.Controllers
 {
     [Route("api/[controller]")]
-    public class ProductController : SimpleCrudController<Product, int>
+    public class ProductController : SimpleCrudController<Product>
     {
-        private readonly ProductRepository<ProductDto, int> productRepository;
-
-        public ProductController(StoreDbContext dbContext, IMapper mapper) : base(dbContext)
+        public ProductController(StoreDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
-            this.productRepository = new ProductRepository<ProductDto, int>(dbContext, mapper);
         }
 
         [HttpGet]
         [Route("[action]/{start:int:min(0)}/{count:int:min(1):max(50)}")]
         public List<ProductDto> GetAvailableProducts(int start, int count)
         {
-            return this.productRepository.GetRange(start, count, true).ToList();
+            return this.crudService.UnitOfWork.ProductRepository.GetRange(start, count, true).ToList();
         }
 
         [HttpGet]
         [Route("[action]/{start:int:min(0)}/{count:int:min(1):max(50)}")]
         public List<ProductDto> GetProducts(int start, int count)
         {
-            return this.productRepository.GetRange(start, count).ToList();
+            return this.crudService.UnitOfWork.ProductRepository.GetRange(start, count).ToList();
         }
 
         [HttpGet]
         [Route("[action]/{start:int:min(0)}/{count:int:min(1):max(50)}")]
         public List<ProductInfoDto> GetProductsInfo(int start, int count)
         {
-            return this.productRepository.GetRangeInfo(start, count).ToList();
+            return this.crudService.UnitOfWork.ProductRepository.GetRangeInfo(start, count).ToList();
         }
 
         [HttpGet]
         [Route("[action]")]
         public List<ProductDto> GetFiltered(string type = null, string category = null, string unit = null)
         {
-            return this.productRepository.GetFiltered(type, category, unit).ToList();
+            return this.crudService.UnitOfWork.ProductRepository.GetFiltered(type, category, unit).ToList();
         }
     }
 }

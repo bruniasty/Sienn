@@ -6,12 +6,12 @@ using System.Linq.Expressions;
 
 namespace SIENN.DbAccess.Repositories
 {
-    public abstract class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
         protected readonly DbSet<TEntity> entities;
         protected DbContext context;
 
-        protected GenericRepository(DbContext context)
+        public GenericRepository(DbContext context)
         {
             this.context = context;
             this.entities = context.Set<TEntity>();
@@ -55,6 +55,19 @@ namespace SIENN.DbAccess.Repositories
         public virtual void Remove(TEntity entity)
         {
             this.entities.Remove(entity);
+        }
+
+        public virtual void Remove(int id)
+        {
+            var entity = this.Get(id);
+            if (entity == null) return;
+            this.Remove(entity);
+        }
+
+        public virtual void Update(TEntity entity)
+        {
+            this.entities.Attach(entity);
+            this.context.Entry(entity).State = EntityState.Modified;
         }
     }
 }

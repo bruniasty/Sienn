@@ -1,45 +1,45 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using SIENN.DbAccess.Context;
 using SIENN.DbAccess.Repositories;
 
 namespace SIENN.Services
 {
-    public class SimpleCrudService<T, TKey> : ISimpleCrudService<T, TKey>
-        where T : class
-        where TKey : IEquatable<TKey>
+    public class SimpleCrudService<T> : ISimpleCrudService<T> where T : class
     {
-        private readonly IStoreRepository<T, TKey> repository;
-
-        public SimpleCrudService(StoreDbContext dbContext)
+        public SimpleCrudService(StoreDbContext dbContext, IMapper mapper)
         {
-            this.repository = new StoreRepository<T, TKey>(dbContext);
+            this.UnitOfWork = new UnitOfWork(dbContext, mapper);
         }
 
-        public async Task<IQueryable<T>> List()
+        public IEnumerable<T> GetAll()
         {
-            return await this.repository.List();
+            return this.UnitOfWork.GetRepository<T>().GetAll();
         }
 
-        public async Task<T> Get(TKey id)
+        public T Get(int id)
         {
-            return await this.repository.Get(id);
+            return this.UnitOfWork.GetRepository<T>().Get(id);
         }
 
-        public async Task Create(T t)
+        public void Create(T t)
         {
-            await this.repository.Create(t);
+            this.UnitOfWork.GetRepository<T>().Add(t);
+            this.UnitOfWork.Save();
         }
 
-        public async Task Update(T t)
+        public void Update(T t)
         {
-            await this.repository.Update(t);
+            this.UnitOfWork.GetRepository<T>().Update(t);
+            this.UnitOfWork.Save();
         }
 
-        public async Task Delete(TKey id)
+        public void Delete(int id)
         {
-            await this.repository.Delete(id);
+            this.UnitOfWork.GetRepository<T>().Remove(id);
+            this.UnitOfWork.Save();
         }
+
+        public UnitOfWork UnitOfWork { get; }
     }
 }
