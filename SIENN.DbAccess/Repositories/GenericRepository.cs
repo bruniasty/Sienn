@@ -47,21 +47,21 @@ namespace SIENN.DbAccess.Repositories
             return this.entities.Count();
         }
 
-        public virtual void Add(TEntity entity)
+        public virtual void Create(TEntity entity)
         {
             this.entities.Add(entity);
         }
 
-        public virtual void Remove(TEntity entity)
+        public virtual void Delete(TEntity entity)
         {
             this.entities.Remove(entity);
         }
 
-        public virtual void Remove(int id)
+        public virtual void Delete(int id)
         {
             var entity = this.Get(id);
             if (entity == null) return;
-            this.Remove(entity);
+            this.Delete(entity);
         }
 
         public virtual void Update(TEntity entity)

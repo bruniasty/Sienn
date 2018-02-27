@@ -24,40 +24,14 @@ namespace SIENN.DbAccess.UnitOfWork
             this.mapper = mapper;
         }
 
-        public ProductRepository<Product> ProductRepository => this.productRepository ?? (this.productRepository = new ProductRepository<Product>(this.context, this.mapper));
+        public IProductRepository<Product> ProductRepository => this.productRepository ?? (this.productRepository = new ProductRepository<Product>(this.context, this.mapper));
 
-        public GenericRepository<Category> CategoryRepository => this.categoryRepository ?? (this.categoryRepository = new GenericRepository<Category>(this.context));
+        public IGenericRepository<Category> CategoryRepository => this.categoryRepository ?? (this.categoryRepository = new GenericRepository<Category>(this.context));
 
-        public GenericRepository<Entities.Type> TypeRepository => this.typeRepository ?? (this.typeRepository = new GenericRepository<Entities.Type>(this.context));
+        public IGenericRepository<Entities.Type> TypeRepository => this.typeRepository ?? (this.typeRepository = new GenericRepository<Entities.Type>(this.context));
 
-        public GenericRepository<Unit> UnitRepository => this.unitRepository ?? (this.unitRepository = new GenericRepository<Unit>(this.context));
-
-        public IGenericRepository<T> GetRepository<T>() where T: class
-        {
-            var repositoryType = typeof(T);
-            if (repositoryType == typeof(Product))
-            {
-                return (IGenericRepository<T>)this.ProductRepository;
-            }
-
-            if (repositoryType == typeof(Category))
-            {
-                return (IGenericRepository<T>)this.CategoryRepository;
-            }
-
-            if (repositoryType == typeof(Unit))
-            {
-                return (IGenericRepository<T>)this.UnitRepository;
-            }
-
-            if (repositoryType == typeof(Entities.Type))
-            {
-                return (IGenericRepository<T>)this.TypeRepository;
-            }
-
-            return null;
-        }
-
+        public IGenericRepository<Unit> UnitRepository => this.unitRepository ?? (this.unitRepository = new GenericRepository<Unit>(this.context));
+        
         public void Save()
         {
             this.context.SaveChanges();

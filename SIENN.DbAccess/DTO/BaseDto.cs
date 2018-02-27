@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using SIENN.DbAccess.Interfaces;
 
 namespace SIENN.DbAccess.DTO
 {
-    public class BaseDto : IKey
+    public class BaseDto
     {
         [Key]
         public int Id { get; set; }

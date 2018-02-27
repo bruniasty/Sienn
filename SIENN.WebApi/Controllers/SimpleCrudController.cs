@@ -1,18 +1,17 @@
 ﻿using System;
-using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using SIENN.DbAccess.Context;
-using SIENN.Services;
+using SIENN.Services.Interfaces;
 
 namespace SIENN.WebApi.Controllers
 {
-    public class SimpleCrudController<T> : Controller where T : class
+    public class SimpleCrudController<TEntity, TService> : Controller where TEntity : class
+                                                                      where TService : IBaseCrudService<TEntity>
     {
-        protected readonly ISimpleCrudService<T> Service;
+        protected readonly TService Service;
 
-        public SimpleCrudController(StoreDbContext dbContext, IMapper mapper)
+        public SimpleCrudController(TService service)
         {
-            this.Service = new SimpleCrudService<T>(dbContext, mapper);
+            this.Service = service;
         }
 
         [HttpGet]
@@ -37,7 +36,7 @@ namespace SIENN.WebApi.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public object Update([FromBody] T model)
+        public object Update([FromBody] TEntity model)
         {
             try
             {
@@ -53,7 +52,7 @@ namespace SIENN.WebApi.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public object Create([FromBody] T model)
+        public object Create([FromBody] TEntity model)
         {
             try
             {

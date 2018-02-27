@@ -4,10 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SIENN.DbAccess.Context;
+using SIENN.DbAccess.Entities;
 using SIENN.DbAccess.Mapping;
-using SIENN.DbAccess.Repositories;
 using SIENN.DbAccess.UnitOfWork;
 using SIENN.Services;
+using SIENN.Services.Interfaces;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace SIENN.WebApi
@@ -45,7 +46,10 @@ namespace SIENN.WebApi
             services.AddSingleton(mapper);
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped(typeof(ISimpleCrudService<>), typeof(SimpleCrudService<>));
+            services.AddScoped(typeof(ICategoryService<Category>), typeof(CategoryService));
+            services.AddScoped(typeof(IProductService<Product>), typeof(ProductService));
+            services.AddScoped(typeof(ITypeService<Type>), typeof(TypeService));
+            services.AddScoped(typeof(IUnitService<Unit>), typeof(UnitService));
 
             services.AddMvc();
         }

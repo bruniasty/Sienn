@@ -10,4 +10,3 @@ E:\Visual Studio\Sienn\SIENN.DbAccess\bin\Debug\netstandard2.0\Microsoft.EntityF
 E:\Visual Studio\Sienn\SIENN.DbAccess\bin\Debug\netstandard2.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 E:\Visual Studio\Sienn\SIENN.DbAccess\bin\Debug\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.xml
 E:\Visual Studio\Sienn\SIENN.DbAccess\bin\Debug\netstandard2.0\Microsoft.EntityFrameworkCore.SqlServer.xml
-E:\Visual Studio\Sienn\SIENN.DbAccess\obj\Debug\netstandard2.0\SIENN.DbAccess.csprojResolveAssemblyReference.cache

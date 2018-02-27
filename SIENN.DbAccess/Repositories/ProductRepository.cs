@@ -9,7 +9,7 @@ using SIENN.DbAccess.Entities;
 
 namespace SIENN.DbAccess.Repositories
 {
-    public class ProductRepository<T> : GenericRepository<T> where T : class
+    public class ProductRepository<T> : GenericRepository<T>, IProductRepository<T> where T : class
     {
         private readonly IMapper mapper;
 
@@ -17,22 +17,7 @@ namespace SIENN.DbAccess.Repositories
         {
             this.mapper = mapper;
         }
-
-        public new ProductDto Get(int id)
-        {
-            return this.GetProductsQuery().ProjectTo<ProductDto>(this.mapper.ConfigurationProvider).FirstOrDefault(e => e.Id == id);
-        }
-
-        public new IEnumerable<ProductDto> GetAll()
-        {
-            return this.GetProductsQuery().ProjectTo<ProductDto>(this.mapper.ConfigurationProvider).ToList();
-        }
-
-        public new IEnumerable<ProductDto> GetRange(int start, int count)
-        {
-            return this.GetProductsQuery().Skip(start).Take(count).ProjectTo<ProductDto>(this.mapper.ConfigurationProvider);
-        }
-
+        
         public IEnumerable<ProductInfoDto> GetRangeInfo(int start, int count)
         {
             var products = this.GetProductsQuery().Skip(start).Take(count).ToList();
