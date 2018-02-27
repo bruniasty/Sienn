@@ -8,18 +8,18 @@ namespace SIENN.WebApi.Controllers
 {
     public class SimpleCrudController<T> : Controller where T : class
     {
-        protected readonly ISimpleCrudService<T> crudService;
+        protected readonly ISimpleCrudService<T> Service;
 
         public SimpleCrudController(StoreDbContext dbContext, IMapper mapper)
         {
-            this.crudService = new SimpleCrudService<T>(dbContext, mapper);
+            this.Service = new SimpleCrudService<T>(dbContext, mapper);
         }
 
         [HttpGet]
         [Route("[action]")]
         public object GetAll()
         {
-            return this.crudService.GetAll();
+            return this.Service.GetAll();
         }
 
         [HttpGet]
@@ -27,7 +27,7 @@ namespace SIENN.WebApi.Controllers
         {
             try
             {
-                return this.crudService.Get(id);
+                return this.Service.Get(id);
             }
             catch (ApplicationException e)
             {
@@ -41,7 +41,7 @@ namespace SIENN.WebApi.Controllers
         {
             try
             {
-                this.crudService.Update(model);
+                this.Service.Update(model);
             }
             catch (ApplicationException e)
             {
@@ -57,7 +57,7 @@ namespace SIENN.WebApi.Controllers
         {
             try
             {
-                this.crudService.Create(model);
+                this.Service.Create(model);
             }
             catch (ApplicationException e)
             {
@@ -73,7 +73,7 @@ namespace SIENN.WebApi.Controllers
         {
             try
             {
-                this.crudService.Delete(id);
+                this.Service.Delete(id);
             }
             catch (ApplicationException e)
             {

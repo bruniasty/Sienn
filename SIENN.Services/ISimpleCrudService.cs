@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using SIENN.DbAccess.Repositories;
+using SIENN.DbAccess.UnitOfWork;
 
 namespace SIENN.Services
 {
@@ -10,6 +10,6 @@ namespace SIENN.Services
         void Create(T t);
         void Update(T t);
         void Delete(int id);
-        UnitOfWork UnitOfWork { get; }
+        IUnitOfWork UnitOfWork { get; }
     }
 }

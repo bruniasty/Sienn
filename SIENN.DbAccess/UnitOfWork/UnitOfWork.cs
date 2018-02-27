@@ -2,10 +2,11 @@
 using AutoMapper;
 using SIENN.DbAccess.Context;
 using SIENN.DbAccess.Entities;
+using SIENN.DbAccess.Repositories;
 
-namespace SIENN.DbAccess.Repositories
+namespace SIENN.DbAccess.UnitOfWork
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IDisposable, IUnitOfWork
     {
         private readonly StoreDbContext context;
         private readonly IMapper mapper;

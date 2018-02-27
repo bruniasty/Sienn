@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
 using SIENN.DbAccess.Context;
-using SIENN.DbAccess.Repositories;
+using SIENN.DbAccess.UnitOfWork;
 
 namespace SIENN.Services
 {
@@ -40,6 +40,6 @@ namespace SIENN.Services
             this.UnitOfWork.Save();
         }
 
-        public UnitOfWork UnitOfWork { get; }
+        public IUnitOfWork UnitOfWork { get; }
     }
 }

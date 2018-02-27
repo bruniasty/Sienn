@@ -19,28 +19,28 @@ namespace SIENN.WebApi.Controllers
         [Route("[action]/{start:int:min(0)}/{count:int:min(1):max(50)}")]
         public List<ProductDto> GetAvailableProducts(int start, int count)
         {
-            return this.crudService.UnitOfWork.ProductRepository.GetRange(start, count, true).ToList();
+            return this.Service.UnitOfWork.ProductRepository.GetRange(start, count, true).ToList();
         }
 
         [HttpGet]
         [Route("[action]/{start:int:min(0)}/{count:int:min(1):max(50)}")]
         public List<ProductDto> GetProducts(int start, int count)
         {
-            return this.crudService.UnitOfWork.ProductRepository.GetRange(start, count).ToList();
+            return this.Service.UnitOfWork.ProductRepository.GetRange(start, count).ToList();
         }
 
         [HttpGet]
         [Route("[action]/{start:int:min(0)}/{count:int:min(1):max(50)}")]
         public List<ProductInfoDto> GetProductsInfo(int start, int count)
         {
-            return this.crudService.UnitOfWork.ProductRepository.GetRangeInfo(start, count).ToList();
+            return this.Service.UnitOfWork.ProductRepository.GetRangeInfo(start, count).ToList();
         }
 
         [HttpGet]
         [Route("[action]")]
         public List<ProductDto> GetFiltered(string type = null, string category = null, string unit = null)
         {
-            return this.crudService.UnitOfWork.ProductRepository.GetFiltered(type, category, unit).ToList();
+            return this.Service.UnitOfWork.ProductRepository.GetFiltered(type, category, unit).ToList();
         }
     }
 }

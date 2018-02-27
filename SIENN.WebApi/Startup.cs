@@ -5,6 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SIENN.DbAccess.Context;
 using SIENN.DbAccess.Mapping;
+using SIENN.DbAccess.Repositories;
+using SIENN.DbAccess.UnitOfWork;
+using SIENN.Services;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace SIENN.WebApi
@@ -40,6 +43,9 @@ namespace SIENN.WebApi
 
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(ISimpleCrudService<>), typeof(SimpleCrudService<>));
 
             services.AddMvc();
         }

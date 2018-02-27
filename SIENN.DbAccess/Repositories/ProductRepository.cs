@@ -35,7 +35,7 @@ namespace SIENN.DbAccess.Repositories
 
         public IEnumerable<ProductInfoDto> GetRangeInfo(int start, int count)
         {
-            var products = this.GetProductsQuery().Skip(start).Take(count);
+            var products = this.GetProductsQuery().Skip(start).Take(count).ToList();
 
             var result = new List<ProductInfoDto>();
             foreach (var product in products)
